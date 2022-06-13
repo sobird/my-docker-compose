@@ -35,6 +35,7 @@ services:
       # - PMA_ARBITRARY=1
       PMA_USER: wordpress
       PMA_PASSWORD: 123456
+      UPLOAD_LIMIT: "10M"
 
 volumes:
   wordpress:

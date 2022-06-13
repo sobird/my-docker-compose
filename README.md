@@ -14,6 +14,11 @@ docker-compose up
 rsync -av sobird@sobird.me:/home/web/blog/wp-content/uploads/ src/wp-content/uploads
 ```
 
+## 同步主题文件
+```
+rsync -av sobird@sobird.me:/home/web/blog/wp-content/themes/junior2011/ src/wp-content/themes/junior2011
+```
+
 ## 数据库导入/导出
 
 输出导出
