@@ -28,12 +28,12 @@ rsync -av sobird@sobird.me:/home/web/blog/wp-content/plugins/ src/wp-content/plu
 
 ## 数据库导入/导出
 
-输出导出
+数据导出
 ```
 mysqldump -usobird -p wordpress > wordpress.sql
 ```
 
-输出导出
+数据导入
 ```
 mysql -uroot -p  wordpress > wordpress.sql
 ```
