@@ -39,3 +39,7 @@ mysqldump -usobird -p wordpress > wordpress.sql
 ```
 mysql -uroot -p  wordpress > wordpress.sql
 ```
+
+
+## FAQ
+### connect() failed (111: Connection refused)
