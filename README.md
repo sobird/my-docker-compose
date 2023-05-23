@@ -1,6 +1,6 @@
 # my-docker-compose
 
-> my docker compose
+> 通过docker定制本地快速部署服务，目前支持了WordPress、PHP开发环境
 
 ## 启动
 ```
@@ -13,19 +13,19 @@ docker-compose up
 > 同步博客远程媒体文件到本地
 
 ```
-rsync -av sobird@sobird.me:/home/web/blog/wp-content/uploads/ src/wp-content/uploads
+rsync -av sobird@sobird.me:/home/web/blog/wp-content/uploads/ wordpress/wp-content/uploads
 ```
 
 ### 同步主题文件
 > 同步博客远程主题文件到本地
 ```
-rsync -av sobird@sobird.me:/home/web/blog/wp-content/themes/junior2011/ src/wp-content/themes/junior2011
+rsync -av sobird@sobird.me:/home/web/blog/wp-content/themes/junior2011/ wordpress/wp-content/themes/junior2011
 ```
 
 ### 同步插件文件
 > 同步博客远程插件文件到本地
 ```
-rsync -av sobird@sobird.me:/home/web/blog/wp-content/plugins/ src/wp-content/plugins
+rsync -av sobird@sobird.me:/home/web/blog/wp-content/plugins/ wordpress/wp-content/plugins
 ```
 
 ### 数据库导入/导出
@@ -41,5 +41,9 @@ mysql -uroot -p  wordpress > wordpress.sql
 ```
 
 
-## FAQ
-### connect() failed (111: Connection refused)
+## SQL
+### 替换文章内容，比如内容中的url。
+
+```sql
+UPDATE wp_posts SET post_content=REPLACE(post_content, 'http://localhost/', 'http://sobird.com/');
+```
