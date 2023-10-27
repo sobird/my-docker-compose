@@ -69,6 +69,9 @@ docker image rm httpd
 # 创建并运行 docker-compose.yml 中编排的容器
 docker-compose up
 
+# 更新容器
+docker-compose up -d httpd 
+
 # 停止并移除容器，网络，镜像和卷
 docker-compose down
 
