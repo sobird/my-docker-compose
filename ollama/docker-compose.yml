@@ -1,4 +1,4 @@
-version: '3.8'
+#version: '3.8'
 
 services:
   ollama:
@@ -30,3 +30,6 @@ services:
       # - HF_ENDPOINT=https://hf-mirror.com
     extra_hosts:
       - host.docker.internal:host-gateway
+
+volumes:
+  open-webui:
