@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - 11434:11434
+    volumes:
+      - ./ollama:/root/.ollama
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           capabilities:
+    #             - gpu
+    container_name: open-webui
+    restart: always
+    ports:
+      - 3000:8080
+    volumes:
+      - open-webui:/app/backend/data
+    # environment:
+      #- OLLAMA_BASE_URL=http://192.168.0.197:11434/api
+      #- WEBUI_SECRET_KEY=TkjGEiQ@5K^j
+      # - HF_ENDPOINT=https://hf-mirror.com
+    extra_hosts:
+      - host.docker.internal:host-gateway
