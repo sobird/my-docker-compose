@@ -1,46 +1,7 @@
-version: '3'
+# version: '3'
+name: apps
+
 services:
-  wordpress:
-    image: wordpress
-    container_name: wordpress
-    restart: always
-    # ports:
-    #   - 8080:80
-    environment:
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: 123456
-      WORDPRESS_DB_NAME: wordpress
-    volumes:
-      - ./wordpress:/var/www/html
-      - ./etc/php/conf.d/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
-
-  db:
-    image: mysql:5.7
-    container_name: mysql
-    restart: always
-    ports:
-      - 3306:3306
-    environment:
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: 123456
-      MYSQL_ROOT_PASSWORD: 123456
-    volumes:
-      - ./var/lib/mysql:/var/lib/mysql
-
-  phpmyadmin:
-    image: phpmyadmin
-    container_name: phpmyadmin
-    restart: always
-    ports:
-      - 8081:80
-    environment:
-      # - PMA_ARBITRARY=1
-      PMA_USER: root
-      PMA_PASSWORD: 123456
-      UPLOAD_LIMIT: "32M"
-
   nginx:
     image: nginx
     container_name: nginx
@@ -68,3 +29,48 @@ services:
     volumes:
       - ./www:/usr/share/nginx/www
       - ./etc/php/conf.d/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+
+  wordpress:
+    image: wordpress
+    container_name: wordpress
+    restart: always
+    # ports:
+    #   - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: 123456
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - ./wordpress:/var/www/html
+      - ./etc/php/conf.d/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - ./var/lib/mysql:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: 123456
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: "32M"
+
+
