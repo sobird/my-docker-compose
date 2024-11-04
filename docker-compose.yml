@@ -17,6 +17,13 @@ services:
       - ./etc/nginx/conf.d:/etc/nginx/conf.d
       - ./var/log/nginx:/var/log/nginx
       - ./www:/usr/share/nginx/www
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis-data:/data
 
   php:
     image: php:7.4.33-fpm
@@ -46,7 +53,7 @@ services:
       - ./etc/php/conf.d/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
   mysql:
-    image: mysql:5.7
+    image: mysql:5.7.16
     container_name: mysql
     restart: always
     ports:
