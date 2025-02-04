@@ -52,8 +52,8 @@ services:
       - ./wordpress:/var/www/html
       - ./etc/php/conf.d/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
-  mysql:
-    image: mysql:5.7.16
+  db:
+    image: mysql:8.0.37
     container_name: mysql
     restart: always
     ports:
